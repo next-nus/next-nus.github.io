@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<title>ER Tutorial</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://kit.fontawesome.com/32c02b05a2.js"></script>
+<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:100,400&display=swap" rel="stylesheet">
+<style>
+html,body,h1,h2,h3,h4 {font-family:"Lato", sans-serif}
+.mySlides {display:none}
+.w3-tag, .fa {cursor:pointer}
+.w3-tag {height:15px;width:15px;padding:0;margin-top:6px}
+table.gridtable {
+                /* font-family: verdana,arial,sans-serif; */
+                /* font-size:14px; */
+                color:#333333;
+                border-width: 1px;
+                border-color: #666666;
+                border-collapse: collapse;
+                text-align: left;
+                width: 100%;
+              }
+              table.gridtable th {
+                border-width: 1px;
+                padding: 1px;
+                border-style: solid;
+                border-color: #666666;
+                /* background-color: #dedede; */
+                /* background-color: #72AD5C; */
+                background-color: #B43E23;
+                color: white;
+                text-align: left;
+                padding: 6px;
+              }
+              table.gridtable td {
+                border-width: 1px;
+                padding: 1px;
+                border-style: solid;
+                border-color: #666666;
+                background-color: #ffffff;
+                text-align: left;
+                padding-left: 50px
+              }
+
+</style>
+<body style="font-family: 'IBM Plex Sans', sans-serif;">
+
+<!-- Links (sit on top) -->
+<!-- <div class="w3-top">
+  <div class="w3-row w3-large w3-light-grey">
+    <div class="w3-col s3">
+      <a href="#" class="w3-button w3-block">Home</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="#abstract" class="w3-button w3-block">Abstract</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="#outline" class="w3-button w3-block">Outline</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="#contact" class="w3-button w3-block">Who we are</a>
+    </div>
+  </div>
+</div> -->
+
+<!-- Content -->
+<!-- background-color: #7C1200; -->
+<div class="w3-center w3-text-white w3-padding-32" style="height: 410px; width:100%; margin-top:0px;margin-bottom:20px; position: relative; background-image: url(img/peking.jpg)">
+  <div class="w3-panel" style="text-align: left; margin-left: 160px">
+    <h1><b>Learning and Reasoning on Graph for Recommendation</b></h1>
+    <h3>Tutorial at ACM Conference on Information & Knowledge Management (CIKM), Beijing, Nov 3-7, 2019</p>
+    <img src="img/LOGO.png" alt="Jane" width="300px"> 
+  </div>
+</div>
+
+    <!-- <div class="w3-center w3-margin-top">
+        <button class="w3-xlarge w3-green w3-button"><i class="far fa-file-pdf"></i>&nbsp; Slides coming soon</button>
+    </div> -->
+
+  <!-- Grid -->
+  <div style="margin-left:80px;margin-right:80px">
+    <div id="abstract">
+        <div class="w3-center w3-padding-32">
+            <span class="w3-bottombar w3-border-dark-grey w3-padding-16 w3-xlarge">ABSTRACT</span>
+        </div>
+        <div style="margin-left:200px; margin-right:200px; text-align: justify">
+            <p style="font-size: 13pt">Recommendation methods construct predictive models to estimate the likelihood of a user-item interaction. Previous models largely follow a general supervised learning paradigm — treating each interaction as a separate data instance and performing prediction based on the “information isolated island”. Such methods, however, overlook the relations among data instances, which may result in suboptimal performance especially for sparse scenarios. Moreover, the models built on a separate data instance only can hardly exhibit the reasons behind a recommendation, making the recommendation process opaque to understand.</p>
+
+            <p style="font-size: 13pt">In this tutorial, we revisit the recommendation problem from the perspective of graph learning. Common data sources for recommendation can be organized into graphs, such as user-item interactions (bipartite graphs), social networks, item knowledge graphs (heterogeneous graphs), among others. Such a graph-based organization connects the isolated data instances, bringing benefits for exploiting high-order connectivities that encode meaningful patterns for collaborative filtering, content-based filtering, social influence modeling and knowledge-aware reasoning. Together with the recent success of graph neural networks (GNNs), graph-based models have exhibited the potential to be the technologies for nextgeneration recommendation systems. The tutorial provides a review on graph-based learning methods for recommendation, with special focus on recent developments of GNNs and knowledge graphenhanced recommendation. By introducing this emerging and promising area in the tutorial, we expect the audience can get deep understanding and accurate insight on the spaces, stimulate more ideas and discussions, and promote developments of technologies.</p>
+        </div>
+    </div>
+
+    <hr>
+    <div id="outline">
+        <div class="w3-center w3-padding-32">
+            <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">OUTLINE</span>
+        </div>
+        <!-- <div style="margin-left:200px; margin-right:200px">
+            <p class="w3-large">Outline goes here</p>
+        </div> -->
+
+
+        <div style="margin-left:200px; margin-right:200px">
+
+        <table class="w3-center w3-padding-32 gridtable">
+            <tr>
+              <th>Introduction</th>
+            </tr>
+
+                <tr>
+                  <td>1.1. Personalized Recommendation</td>
+                </tr>
+                <tr>
+                  <td>1.2. Organization of the tutorial</td>
+                </tr>
+
+            <tr>
+              <th>Part I: Preliminary of Recommendation</th>
+            </tr>
+
+                <tr>
+                  <td>2. Problem Formulation [10 minutes]</td>
+                </tr>
+                <tr>
+                  <td>3. Unified View for Recommendation Paradigm [10 minutes]</td>
+                </tr>
+                <tr>
+                  <td>4. Limitations of Previous Works [10 minutes]</td>
+                </tr>
+            
+          
+            <tr>
+              <th>Part II: Learning on Graph</th>
+            </tr>
+            
+                <tr>
+                  <td>5. Early Graph-Learning Techniques [10 minutes]</td>
+                </tr>
+                <tr>
+                  <td>6. Recent Graph Neural Networks [30 minutes]</td>
+                </tr>
+
+            <tr>
+              <th>Part III: Learning on Graph for Recommendation</th>
+            </tr>
+                <tr>
+                  <td>7. Collaborative Filtering [30 minutes]</td>
+                </tr>
+                <tr>
+                  <td class="w3-light-grey">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.1 User-Item Bipartite Graph</td>
+                </tr>
+                <tr>
+                  <td class="w3-light-grey">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.2 Recent Works</td>
+                </tr>
+
+
+                <tr>
+                  <td>8. Social Recommendation [20 minutes]</td>
+                </tr>
+                <tr>
+                  <td class="w3-light-grey">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.1 Social Networks</td>
+                </tr>
+                <tr>
+                  <td class="w3-light-grey">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.2 Recent Works</td>
+                </tr>
+                
+
+                <tr>
+                    <td>9. Sequential Recommendation [20 minutes]</td>
+                  </tr>
+                  <tr>
+                    <td class="w3-light-grey">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9.1 Session Graphs</td>
+                  </tr>
+                  <tr>
+                    <td class="w3-light-grey">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9.2 Recent Works</td>
+                  </tr>
+
+                  <tr>
+                      <td>10. Knowledge Graph-based Recommendation [30 minutes]</td>
+                    </tr>
+                    <tr>
+                      <td class="w3-light-grey">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.1 Collaborative Knowledge Graph</td>
+                    </tr>
+                    <tr>
+                      <td class="w3-light-grey">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.2 Recent Works</td>
+                    </tr>
+            
+          </table>
+        </div>
+
+    </div>
+    
+    
+    <hr>
+    <!-- Grid -->
+    <div class="w3-row-padding" id="about">
+        <div class="w3-center w3-padding-32">
+            <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16" >PRESENTERS</span>
+        </div>
+
+        <!-- <div class="w3-center" > 
+            <img src="img/IBM-Logo.png" alt="Jane" style="max-height:80px">
+        </div>
+        <div class="w3-center w3-margin-bottom">
+            <img src="img/entity-team.png" style="width:100px">    
+        </div> -->
+
+        <div class="w3-center w3-col m3 w3-margin-bottom" style="margin-left:150px">
+          <a href="https://xiangwang1223.github.io/" target="_blank">
+            <div>
+                <img src="img/xiangwang.jpg" alt="Sairam" style="height:150px">
+                <div class="w3-container">
+                <h4>Xiang Wang</h4>
+                <p>NUS</p>
+                <p><button class="w3-button w3-light-grey w3-block">xiangwang [at] u.nus.edu</button></p>
+                </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="w3-center w3-col  m3 w3-margin-bottom">
+          <a href="http://staff.ustc.edu.cn/~hexn/" target="_blank">
+            <div>
+                <img src="img/xiangnan.png" alt="Lucian" style="height:150px;">
+                <div class="w3-container">
+                <h4>Xiangnan He</h4>
+                <p>USTC</p>
+                <p><button class="w3-button w3-light-grey w3-block">xiangnanhe [at] gmail.com</button></p>
+                </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="w3-center w3-col  m3 w3-margin-bottom">
+            <a href="https://www.chuatatseng.com/" target="_blank">
+              <div >
+                  <img src="img/chuats.png" alt="Prithviraj Sen" style="height:150px">
+                  <div class="w3-container">
+                  <h4>Tat-Seng Chua</h4>
+                  <p>NUS</p>
+                  <p><button class="w3-button w3-light-grey w3-block">chuats [at] nus.edu.sg</button></p>
+                  </div>
+              </div>
+            </a>
+        </div>
+    </div>
+    <div id="bio">
+        <hr>
+        <div class="w3-medium" style="margin-top:40px; margin-left:200px; margin-right:200px; text-align: justify">
+            <p>
+                <b style="color: #B43E23">Dr. Xiang Wang</b> is a research fellow with School of Computing, National University of Singapore (NUS).
+                He received his Ph.D. in Computer Science from NUS in 2019. His research interests cover recommender system, information retrieval, and data mining.
+                He has over 20 publications in several top conferences, such as SIGIR, KDD, WWW, and AAAI, and journals including TOIS and TKDE.
+                He has served as the local chair of CCIS 2019, the PC member for top-tier conferences including SIGIR, CIKM, and MM, and the regular reviewer for prestigious journals like TKDE and TOIS.
+            </p>
+
+            <p>
+                <b style="color: #B43E23">Dr. Xiangnan He</b> is a professor with the University of Science and Technology of China (USTC).
+                He received the Ph.D. degree in Computer Science from National University of Singapore (NUS) in 2016.
+                His research interests span information retrieval, data mining, and applied machine learning. He has over 60 publications appeared in several top conferences such as SIGIR, WWW, KDD and MM, and journals including TKDE, TOIS, and TNNLS.
+                His work on recommender systems has received the Best Paper Award Honourable Mention in WWW 2018 and SIGIR 2016.
+                Moreover, he has served as the PC chair of CCIS 2019, area chair of MM 2019 and CIKM 2019, and PC member for several top conferences including SIGIR, WWW, KDD etc., and the regular reviewer for journals including TKDE, TOIS, TMM, etc.
+                He has rich teaching experience, including give the tutorial “Deep Learning for Matching in Search and Recommendation” in WWW 2018 and SIGIR 2018, the tutorial “Information Discovery in E-commerce” in SIGIR 2018, and the tutorial “Recommendation Technologies for Multimedia Content” in ICMR 2018.
+            </p>
+
+            <p>
+                <b style="color: #B43E23">Dr. Tat-Seng Chua</a></b> is the KITHCT Chair Professor at the School of Computing, National University of Singapore.
+                He holds a Ph.D. from the University of Leeds, UK. He was the Acting and Founding Dean of the School from 1998-2000.
+                Dr Chua’s main research interest is in multimedia information retrieval and social media analytics.
+                In particular, his research focuses on the extraction, retrieval and question-answering (QA) of text and rich media arising from the Web and multiple social networks.
+                He is the co-Director of NExT, a joint Center between NUS and Tsinghua University to develop technologies for live social media search.
+                Dr Chua is the 2015 winner of the prestigious ACM SIGMM award for Outstanding Technical Contributions to Multimedia Computing, Communications and Applications.
+                He is the Chair of steering committee of ACM International Conference on Multimedia Retrieval (ICMR) and Multimedia Modeling (MMM) conference series.
+                Dr Chua is also the General Co-Chair of ACM Multimedia 2005, ACM CIVR 2005, ACM SIGIR 2008, and ACM Web Science 2015. He serves in the editorial boards of four international journals.
+                Dr. Chua is the co-Founder of two technology startup companies in Singapore.
+            </p>
+            
+        </div>
+    </div>
+    </div>
+    
+  </div>
+  
+
+<!-- Footer -->
+
+<footer class="w3-container w3-padding-32 w3-center" style="background-color: #B43E23">
+  <a href="#" class="w3-button w3-light-grey w3-margin"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  <div class="w3-small w3-section">
+    
+
+    <a href="http://www.nextcenter.org/" title="W3.CSS" target="_blank" class="w3-text-white">All rights reserved by NExT++ Center</a> | Webpage template borrows from <a href="https://ertutorial-arc.github.io/">https://ertutorial-arc.github.io/</a></p>
+  </div>
+</footer>
+
+
+<script>
+// Slideshow
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function currentDiv(n) {
+  showDivs(slideIndex = n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demodots");
+  if (n > x.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = x.length} ;
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" w3-white", "");
+  }
+  x[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " w3-white";
+}
+</script>
+
+</body>
+</html>
